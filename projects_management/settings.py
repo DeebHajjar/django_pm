@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-f4)8f79v*@8owiba-$74j39#djt5w^qpo+sb58(u=$g80#(ce)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
-#postgresql://django_pm_v7ur_user:jOpGF5fDlyGUqQnNfhFYabS6DNb1VYqS@dpg-cseelddsvqrc73f1va0g-a.oregon-postgres.render.com/django_pm_v7ur
+ALLOWED_HOSTS = [
+    'django-pm-txac.onrender.com', '127.0.0.1'
+]
 
 # Application definition
 
@@ -81,14 +82,8 @@ WSGI_APPLICATION = 'projects_management.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_pm_v7ur',
-        'USER': 'django_pm_v7ur_user',
-        'PASSWORD': 'jOpGF5fDlyGUqQnNfhFYabS6DNb1VYqS',
-        'HOST': 'dpg-cseelddsvqrc73f1va0g-a',
-        'PORT': '5432'
-    }
+    "default": dj_database_url.parse(os.environ.get("postgresql://django_pm_v7ur_user:jOpGF5fDlyGUqQnNfhFYabS6DNb1VYqS@dpg-cseelddsvqrc73f1va0g-a.oregon-postgres.render.com/django_pm_v7ur"))
+
 }
 
 # Password validation
